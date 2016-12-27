@@ -1,0 +1,4 @@
+ 
+ sqlcmd = sqlcmd.Remove(sqlcmd.Length - 1);
+                sqlcmd += " where act_no = '" + act_no + "'";
+                int ret = sqldb.executeUpdate(sqlcmd);

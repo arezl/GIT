@@ -1,0 +1,5 @@
+G:\工作\tool\createSql\Domain\bin\Debug\Domain.dll
+G:\工作\tool\createSql\Domain\bin\Debug\Domain.pdb
+G:\工作\tool\createSql\Domain\obj\Debug\Domain.dll
+G:\工作\tool\createSql\Domain\obj\Debug\Domain.pdb
+G:\工作\tool\createSql\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

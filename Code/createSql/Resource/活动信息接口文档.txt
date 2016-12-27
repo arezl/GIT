@@ -1,0 +1,1176 @@
+﻿
+
+
+XX参考手册
+ 
+
+(仅供内部使用)
+
+
+
+
+
+
+
+
+
+
+
+
+
+　　拟制：                日期：               
+　　审核：                日期：              
+　　批准：                日期：              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+目    录
+1 活动地址	3
+1.1 活动地址操作 ActAddrOperation	3
+1.2 获取活动地址 ActAddrInfoGet	3
+2 活动选择的地址	4
+2.1 活动选择地址操作    ActInfofkAddrOperation	4
+2.2 获取某活动的所有的‘活动选择地址’   ActInfofkAddrGet	5
+3 活动选择的对象	5
+3.1 ‘活动选择的对象’操作    ActInfofkObjOperation	5
+3.2 获取某活动的所有的’活动选择的对象’  ActInfofkObjGet	6
+4 活动选择图片集	6
+4.1 ‘活动选择的图片’操作     ActPicOperation	6
+4.2 获取‘活动选择的图片’    ActPicGet	6
+5 活动选择的门店	7
+5.1 ‘活动选择的门店’操作      ActInfofkBranchOperation	7
+5.2 获取某活动的所有的‘活动选择的门店’  ActInfofkBranchGet	7
+6 活动信息	8
+6.1 发布活动信息         ActInfoOperation	8
+6.2 获取一个活动信息     ActInfoGet	9
+6.3 获取有效的活动列表   ActInfoEffectiveGet	10
+6.4 获取活动列表 按条件查询 ActInfoGetList	11
+6.5 获取活动明细          ActDetailGet	12
+6.6 修改是否审核           ChgActRelease	13
+6.7 延期                   ChgActTimeDelay	13
+6.8 修改活动状态 ChgActStateUpdate	13
+6.9 查询 ChgActStateUpdate	14
+7 前台 活动	14
+7.1 获取活动列表      viewActInfoGetList	14
+7.2 获取 可以参与活动的卡列表	15
+7.3 活动报名(前后台)	15
+1 格式示例	16
+1.1.1 三级标题	16
+1.1.2 三级标题	16
+1.1.3 三级标题	16
+附录：	17
+参考文献：	17
+
+
+
+
+
+
+
+
+1 活动地址
+1.1 活动地址操作 ActAddrOperation
+string ActAddrOperation(string key, string userID, string action, 
+　　string id, string actname, string man, string tel, string addr, 
+　　string longitude, string latitude, string remark);
+参数:
+　　"key",
+　　"userID", 用户号
+　　"action":  操作类型  add 添加 update 修改 del 删除
+　　"id": 编号， 在add时无效。 update 和 del 时必填
+　　"actname": 活动地址名称
+　　"man": 联系人
+　　"tel": 联系电话
+　　 addr: 活动详细地址
+    "longitude": 经度
+    "latitude": 维度
+　　"remark": 备注
+返回:
+　　state:0 失败，1 成功。
+　　message: 失败时返回信息，成功时返回id
+　　
+1.2 获取活动地址 ActAddrInfoGet
+string ActAddrInfoGet(string key, string userID, 
+string id, string actname, string addr, string viewRows, string pageNums)
+参数:
+　　"key",
+　　"userID", 用户号
+　　"id": 编号，有编号是只能查出一条信息， 查询列表时id填空
+　　"actname": 活动名称  *模糊匹配
+　　"addr": 联系电话  *模糊匹配
+　　"viewRows": 每页内容
+　　"pageNums": 第n页
+　　
+返回:
+　　state:0 失败，1 成功。
+　　message: 失败时返回信息，成功时返回1
+　　tab1: 成功时才有本信息
+　　"RowNumber":行号
+　　"id":活动编号
+　　"actname":活动名称
+　　"longitude":经度
+　　"latitude":维度
+　　"addr":活动地址
+　　"man":联系人
+　　"tel":电话
+　　"remark":备注
+　　tab2: 成功时才有本信息
+　　"con": 总条数
+　　
+2 活动类型
+2.1 活动类型操作
+　　       string OperationActivityType(string action, string id, string name, string parent_id, string is_show, string sort_order, string brief, string key, string userID, string img_URL);
+　　
+参数:
+　　"action":  操作类型  add 添加 update 修改 del 删除
+　　"id": 类型id
+　　" name ": 类型名称
+　　" parent_id ": 父类id
+　　" is_show ": 是否展示 0为不显示，1为显示
+　　" sort_order ": 显示顺序 
+　　" brief ": 备注
+　　"key",
+　　"userID", 用户号
+　　"img_URL",图片地址
+返回:
+　　"0"操作失败， "1"操作成功，"2"还有活动不能修改
+　　
+　　
+3 活动选择的地址
+　　
+3.1 活动选择地址操作    ActInfofkAddrOperation
+string ActInfofkAddrOperation(string key, string userID, string action, string id, string act_no, string act_addr_id, string man, string tel, string man_max, string signUpNum, string remark)
+
+参数:
+　　"key",
+　　"userID", 用户号
+　　"action":  操作类型  add 添加 update 修改 del 删除
+　　"id": 编号， 在add时无效。 update 和 
+　　"act_no": 活动的编号，活动必须存在时才能添加成功  del 时删除该地址的所有活动
+　　“act_addr_id” ‘活动地址’的id 必须存在时才能添加成功
+　　"man": 联系人
+　　"tel": 联系电话
+　　 man_max: 最大报名人数
+　　" signUpNum ":报名人数
+　　"remark": 备注
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息
+　　
+　　
+3.2 获取某活动的所有的‘活动选择地址’   ActInfofkAddrGet
+string ActInfofkAddrGet(string key, string userID, string act_no)
+参数:
+　　"key",
+　　"userID", 用户号
+　　 "act_no": 活动的编号，
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息，成功返回如下列表
+            "id":  编号
+            "act_no": 活动编号
+            "act_addr_id": 活动地址编号
+            "man":  联系人
+            "tel":  电话
+            "man_max": 最大报名人数
+            "man_sign": 已报名人数
+            "remark": 备注
+　　act_addr_name  地址名称
+　　addr    详细地址
+        
+4 活动选择的对象
+4.1 ‘活动选择的对象’操作    ActInfofkObjOperation
+public string ActInfofkObjOperation(string key, string userID, string action, 
+string id, string act_no, string obj_id)
+
+参数:
+　　"key",
+　　"userID", 用户号
+　　"action":  操作类型  add 添加 update 修改 del 删除
+　　"id": 编号， 在add时无效。 update 和 del 时必填
+　　"act_no":  活动的编号，活动必须存在时才能添加成功
+　　“obj_id” 活动的对象编号 不能为空
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息
+　　
+　　
+4.2 获取某活动的所有的’活动选择的对象’  ActInfofkObjGet
+string ActInfofkObjGet(string key, string userID, string act_on)
+参数:
+　　"key",
+　　"userID", 用户号
+　　 "act_no": 活动的编号，
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息，成功返回如下列表
+            "id": 编号
+            "act_no": 活动的编号
+            "obj_id": 对象的编号(此处是会员等级编号)  或者 ‘all’
+            "type_name": "VIP7"   对应的名称
+
+5 活动选择图片集
+5.1 ‘活动选择的图片’操作     ActPicOperation
+ string ActPicOperation(string key, string userID, string action, string PictureID, string PictureURL)
+参数:
+　　"key",
+　　"userID", 
+　　action : 操作         add添加  del 删除
+　　 "act_no": 活动的编号, 必填
+　　  PictureID : 图片编号  add时无效， del 时为空删除所有，不为空删除该ID的地址
+　　  PictureURL :图片地址  add时必填，del时无效
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息，成功返回空
+　　
+5.2  获取‘活动选择的图片’    ActPicGet
+　　string ActPicGet(string key, string userID, string act_no,string PictureID)
+　　
+参数:
+　　"key",
+　　"userID", 
+　　 "act_no": 活动的编号, 必填
+　　  PictureID : 图片编号  为空时获取所有图片
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息，成功返回如下列表
+　　[{"PictureID":编号
+　　"act_no":活动号
+　　"PictureURL":图片地址
+　　]}
+　　
+　　
+6 活动选择的门店
+　　在会员信息接口 使用GetBranchList 获取门店列表
+6.1 ‘活动选择的门店’操作      ActInfofkBranchOperation
+public string ActInfofkBranchOperation(string key, string userID, string action, string id, string act_no, string branch_no)
+参数:
+　　"key",
+　　"userID", 用户号
+　　"action":  操作类型  add 添加 update 修改 del 删除
+　　"id": 编号， 在add，del 时无效。 
+　　"act_no":  活动的编号，活动必须存在时才能添加成功  , del 时删除该门店所有的
+　　“branch_no” 活动的门店编号 不能为空
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息
+
+6.2 获取某活动的所有的‘活动选择的门店’  ActInfofkBranchGet
+string ActInfofkBranchGet(string key, string userID, string act_on)
+参数:
+　　"key",
+　　"userID", 用户号
+　　 "act_on": 活动的编号，
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息，成功返回如下列表
+            "id": 编号
+            "act_no": 活动的编号
+            "branch_no": 对象的编号(此处是会员等级编号)
+　　branch_name 门店名称
+　　address   门店地址
+
+
+
+
+
+
+7 活动信息
+7.1 发布活动信息         ActInfoOperation
+   string ActInfoOperation(string key, string userID, string action, string id,
+      string act_name, string act_code, string status, string date_start, string date_end, string time_start, string time_end, string is_need_sign,
+      string sign_time_start, string sign_time_end, string sign_max,  string sign_money, string money_time, string is_have_prize, string sign_man_max, string act_img,
+      string act_detial, string act_more_img, string act_more_link, string is_send_wx, string is_send_msg,string is_top,string remark, string is_use_acc, string acc_percent, string acc_num,string act_img2)
+参数:
+　　string key, 
+　　string userID,    编辑人ID
+　　string action,    add 添加 update 修改 del 删除
+　　string id, 活动编号  添加时id无效， 删除,修改时必填
+　　string act_name, 名称， [不能为空]
+　　string act_theme, 主题
+　　string act_code, 分类  [接口检查是否存在该编号]
+　　string status, 状态,   后面定义
+　　string date_start,  开始日期
+　　string date_end,    结束日期
+　　string time_start,  开始时间
+　　string time_end,    结束时间
+　　string is_need_sign,是否需要报名  1表示是，0或空表示否
+　　string sign_time_start, 报名开始时间 
+　　string sign_time_end,   报名结束时间
+　　string sign_max,        报名最大人数限制
+　　string sign_money,    报名费
+　　string money_time,    付费保留时长，过时未付费，自动删除报名
+　　string is_have_prize, 是否有奖品 1表示是，0或空表示否
+　　string sign_man_max,  单个客户报名次数限制，超过次数不能报名。
+　　string act_img,      活动宣传图片，存的是一个连接
+　　string act_detial,   活动详情 很大的字符串
+　　string act_more_img, 更多活动，本活动的缩略图
+　　string act_more_link,存活动的编号
+　　string is_send_wx,   是否发送微信消息
+　　string is_send_msg,  是否发送短信消息
+　　string is_top,   是否置顶   1 置顶，0或空不置顶
+　　string remark， 备注
+　　string date_start2,   延期开始日期   add无效,update时为空即不修改
+　　string date_end2,    延期开始日期
+　　string time_start2,    延期开始时间
+　　string time_end2,    延期开始时间
+　　string sign_time_start2,    延期报名开始时间
+　　string sign_time_end2   延期报名结束时间
+　　string is_use_acc, 是否使用积分  0 不使用 1 使用
+　　string acc_percent, 积分比例
+　　string acc_num, 积分固定值
+　　string act_img2活动方型图
+　　
+返回：
+　　"state":0表示失败，1成功
+　　"message":" 失败时返回失败消息，成功返如下
+　　"act_no": 活动编号
+　　"is_release": 是否审核   0未审核   1 已经审核
+
+7.2 获取一个活动信息     ActInfoGet
+public string ActInfoGet(string key, string userID, string id)
+参数:
+　　   Key
+　　userID
+　　Id       活动编号
+返回
+　　 "state": "1",   0表示失败，1成功
+　　  "message": [    失败时返回失败消息，否则返回如下  字段说明与上一个接口相同
+　　        {
+　　"act_no": "201638250001",
+　　            "act_name": "dada",
+　　act_theme 主题
+　　            "act_code": "10102",
+　　            "act_code_name": "",
+　　            "status": "",
+　　            "date_start": "1900-01-01",
+　　            "date_end": "1900-01-01",
+　　            "time_start": "00:00:00",
+　　            "time_end": "00:00:00",
+　　            "date_start2": "",延期
+　　            "date_end2": "",延期
+　　            "time_start2": "",延期
+　　            "time_end2": "",延期
+　　            "is_need_sign": "0",
+　　            "sign_time_start": "1900-01-01 00:00:00",
+　　            "sign_time_end": "1900-01-01 00:00:00",
+　　            "sign_time_start2": "", 延期
+　　            "sign_time_end2": "",延期
+　　            "sign_max": "0",
+　　            "sign_money": "0.00",
+　　            "money_time": "0",
+　　            "is_have_prize": "0",
+　　            "release_man": "",
+　　            "release_time": "",
+　　            "sign_man_max": "0",
+　　            "act_img": "",
+　　            "act_detial": "",
+　　            "act_more_img": "",
+　　            "act_more_link": "",
+　　act_more_code_name,  关联活动的类型名称
+　　            "act_more_name": "dada",
+　　            "act_tel": "",
+　　            "act_addrs": "",
+　　            "is_send_wx": "0",
+　　            "is_send_msg": "0",
+　　            "write_man": "",
+　　            "write_time": "2016-10-25 10:38:15",
+　　            "is_top": "0",
+　　            "is_release": "0",
+　　            "remark": "",
+　　            "remark_delay": "",
+　　            "remark_release": "",
+　　            "remark_status": "",
+　　            "is_act_end":   活动是否结束" 0 "尚未举行  "1  "举行中  "2  "活动结束  "-1" 获取状态出错
+　　            "is_use_acc ", 是否使用积分
+　　"acc_percent ", 积分比例
+　　"acc_num ", 积分固定值
+　　" act_img2 "活动方型图
+
+　　
+　　"
+　　        }
+7.3 获取有效的活动列表   ActInfoEffectiveGet
+ string ActInfoEffectiveGet(string key, string userID, string act_name, string act_code)
+参数:
+　　"key",
+　　"userID", 用户号
+　　"act_name":  活动名称  ，为空表示所有， 模糊匹配
+　　"act_code": 活动分类，为空时表示所有， 模糊匹配
+返回：
+　　state:0 失败，1 成功。
+　　message: 失败时返回失败消息
+　　"act_no":"201630200001",
+　　"act_name":活动名称
+　　"name":"  分类名称
+　　
+7.4 获取活动列表 按条件查询 ActInfoGetList
+public string ActInfoGetList(string key, string userID,
+string act_no, string act_name, string act_code, string status, string date_start, 
+string date_end, string time_start, string time_end,string act_addr_list, 
+string act_branch_no_list, string act_obj, string write_man_list, string release_man_list,
+string release_time_s, string release_time_e, string is_need_sign, string sign_money_min, string remark)
+参数:
+　　"key",
+　　"userID", 用户号
+string act_no,   活动编号  匹配前部分
+string act_name,  名称，模糊匹配
+string act_code,  类型，匹配前部分
+string status, 状态 
+string date_start, 开始日期
+string date_end,   结束日期
+string time_start, 开始时间
+string time_end,   结束时间
+string act_addr_list,     地址编号列表,以逗号分开
+string act_branch_no_list,门店编号列表,以逗号分开
+string act_obj,   活动对象编号  
+string write_man,   编辑人编号列表,以逗号分开
+string release_man, 发布人编号列表,以逗号分开
+string release_time_s,   发布时间范围
+string release_time_e,   发布时间范围
+string is_need_sign,    是否需要报名
+string sign_money_min,  报名需要的最小金额
+string remark   备注，模糊匹配
+string viewRows, 每页显示的数量*必填
+string pageNums, 显示的页码*(必填项)
+string orderStr 排序的字段  为空则默认为 act_no
+
+返回：
+    "state":  0 失败，1 成功。
+　　"message":"1",    成功返回1，失败返回消息
+　　"tab1":   成功才返回
+　　[{"rownumber":"1",
+　　"act_no":"201621210001",
+　　"act_name":"dd",
+　　"act_code":"",
+　　[is_need_sign],  是否要报名
+　　[sign_money],  报名费
+　　[release_time]  审核时间
+　　is_release  是否审核
+　　"act_code_name":"",
+　　"status":"",
+　　"date_start":"1900-01-01",
+　　"date_end":"1900-01-01",
+　　"time_start":"00:00:00",
+　　"time_end":"00:00:00",
+　　"release_man":"",
+　　"write_man":"",
+　　"write_time":"2016-10-21 :21:09",
+　　"remark":""
+      remark_delay : 延期的备注
+      remark_release :修改发布的备注
+      remark_status :状态修改的备注
+　　[date_start2]   活动开始日期
+　　[date_end2] 活动结束日期
+　　[time_start2]  活动开始时间
+　　[time_end2]  活动结束时间
+　　[sign_time_start2]  报名开始时间
+　　[sign_time_end2] 报名结束时间
+　　}]
+　　"tab2":[{"con":"8"}]}
+　　
+7.5 获取活动明细          ActDetailGet
+　　 public string ActDetailGet(string key, string userID, string id)
+　　参数:
+　　    "key",
+　　　　"userID", 用户号
+　　　　　Id       活动编号
+　　返回
+　　	    ""  直接返回内容字符串
+7.6 修改是否审核           ChgActRelease
+public string ChgActRelease(string key, string userID, 
+　　string act_no,string is_release,string remark_add)
+参数:
+　　"key",
+　　"userID", 用户号
+　　act_no,    活动编号
+　　is_release,  新的状态  1审核    0 未审核/反审核
+　　remark_add
+返回：
+"state":0表示失败，1成功
+"message":" 失败时返回失败消息
+7.7 延期                   ChgActTimeDelay
+
+string ChgActTimeDelay(string key, string userID, string act_no,
+            string date_start2,string date_end2,string time_start2,string time_end2,
+            string sign_time_start2,string sign_time_end2, string remark_delay)
+参数:
+　　"key",
+　　"userID", 用户号
+　　act_on,   活动编号
+string date_start2,  开始日期     传入与原来一样的值则不延期
+string date_end2, 结束日期
+string time_start2, 开始时间
+string time_end2,结束时间
+string sign_time_start2,   报名开始时间
+string sign_time_end2,     报名结束时间
+string remark_delay      备注
+返回：
+ "state":0表示失败，1成功
+"message":" 失败时返回失败消息
+
+
+
+
+7.8 修改活动状态 ChgActStateUpdate
+public string ChgActStateUpdate(string key, string userID, string act_no, string status, string remark_status)
+参数:
+　　"key",
+　　"userID", 用户号
+　　act_on,   活动编号
+　　status,  活动状态 0 :正常    1:暂停   2:终止 
+　　remark_status  修改状态备注
+返回：
+ "state":0表示失败，1成功
+"message":" 失败时返回失败消息
+
+
+7.9 查询 ChgActStateUpdate
+public string ChgActStateUpdate(string key, string userID, string act_no, string status, string remark_status)
+参数:
+　　"key",
+　　"userID", 用户号
+　　act_on,   活动编号
+　　status,  活动状态 0 :正常    1:暂停   2:终止 
+　　remark_status  修改状态备注
+返回：
+ "state":0表示失败，1成功
+"message":" 失败时返回失败消息
+
+
+8 前台 活动
+8.1 获取活动列表      viewActInfoGetList
+string viewActInfoGetList(string key, string userID,string longitude, string latitude, string city, string kilometre, string act_code, string viewRows, string pageNums)
+
+参数:
+　　string key, 
+　　string userID,
+　　string longitude,   经度    （没有经度度，则必须填市）
+　　string latitude,    维度
+　　string city,       市 
+　　string kilometre,   计算的公里数
+　　string act_code,    分类 (为空时查全部)
+　　string viewRows,    每页显示条数
+　　string pageNums     第n页
+返回：
+"state":0表示失败，1成功
+"message":" 失败时返回失败消息
+　　[{"rownumber": 行号
+　　"act_no":  活动编号
+　　"act_name":"活动名称
+　　"act_theme":活动主题
+　　"date_start":开始日期
+　　"time_start":开始时间
+　　"is_act_end":活动是否结束  0未开始,1正在进行 2 已经结束
+　　"juli": 距离 (米)
+　　"act_img": 活动图片
+　　"act_code":活动分类
+　　"id":"1" 活动地址ID
+　　is_top  是否置顶  1表示是
+　　act_code_name  活动类型名称
+　　
+　　
+　　
+返回
+　　id  名称，活动日期(年月日或延期)   ,主题, 按米返回距离.    封面图片   , 
+　　前端列表，，，N公里以内，以活动时间排序，以外否以是公里排序。
+8.2 获取 可以参与活动的卡列表   viewActCanSignCardList
+　　public string viewActCanSignCardList(string key, string userID, string act_no)
+参数:
+　　string key, 
+　　string userID,  微信号
+　　string act_no,   活动编号
+返回：
+"state":0表示失败，1成功
+"message":" 失败时返回失败消息，成功返回卡号列表
+　　[{"card_id":卡号,
+　　type_name : 会员等级
+　　acc_num     剩余积分
+　　residual_amt  剩余金额
+　　]}
+8.3 活动报名(前后台)     SignUp
+　　string SignUp(string act_no,string id,string WX_ID,string card_ID，string Contacts,
+　　string PhoneNo,string SignUpNum, string key, string userID)
+参数:
+　　string act_no,  活动编码
+　　string id,  活动地址ID
+　　string WX_ID, 微信号
+　　string card_ID,会员卡号
+　　string Contacts,  联系人姓名
+　　string PhoneNo,联系人电话
+　　string SignUpNum, 报名人数。
+　　string key, 
+　　string userID 操作员ID
+
+返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+　　"VerificationCode":校验值
+　　"
+8.4 保存二维码图片    SaveSignUpQRCode
+　　string SaveSignUpQRCode(string key, string userID,string VerificationCode,  string QRCode_PictureURL);
+　　参数:
+　　string key, 
+　　string userID, 操作员ID
+　　string VerificationCode 验证码
+　　string QRCode_PictureURL,   验证码图片地址
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+　　 
+8.1 根据验证码验证活动信息
+        string GetActInfoByVerificationCode(string key, string userID, string VerificationCode);
+　　参数:
+　　string key, 
+　　string userID,  操作员ID
+　　string VerificationCode 验证码
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+　　 
+8.2 根据验证码获取活动信息
+        string GetActInfoOnVerificationCode (string key, string userID, string VerificationCode);
+　　参数:
+　　string key, 
+　　string userID,  操作员ID
+　　string VerificationCode 验证码
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+　　[{"SignUpID": 活动注册id,
+　　"act_no":活动编号,
+　　"CheckCount":核销数,
+　　"RestCount":剩余核销数
+　　"act_name":活动名,
+　"Flg":报名状态  活动正常："y"活动正常 "3"活动已经缴费
+     "VerificationCode"二维码
+　　"date_start":开始日期,
+　　"time_start":开始时间,
+　　"date_end":结束日期,
+　　"time_end":结束时间,
+　　"SignUpNum":"参加人数
+　　"sign_money":报名费
+　　"act_Place":活动地址
+　　" flow_no":流水号
+　　"QRCode_PictureURL":二维码图片地址
+　　"hasMoney "  使用金额有值 1  没值 0 
+　　"IsCheck"  完全核销 1；非完全核销 0
+　　"CancelSignUpNum" 取消报名数
+　　"refund_num" 退款人数
+　　}]}
+　　　
+　　　
+8.3 客户参加活动审判
+　　  string ClientJoinAct(string key, string userID, string VerificationCode , string CheckCount);
+　　参数:
+　　string key, 
+　　string userID,  操作员ID
+　　string VerificationCode 验证码
+　　string CheckCount 当次核销数
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+　　
+8.4 用户收藏活动
+　　   public string ActSaveFavor(string key , string userID, string Statu,   string act_no )
+　　参数:
+　　string key, 
+　　string userID,  操作员ID
+　　string Statu 1为已结收藏0为未收藏
+　　string act_no  活动编号
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+8.5 用户收藏活动列表
+　　string GetFavorActInfoByUserID(string key, string userID, string viewRows, string pageNums);
+　　参数:
+　　string key, 
+　　string userID,  操作员ID 
+　　string viewRows, 每页显示的数量*必填
+　　string pageNums, 显示的页码*(必填项)
+　　
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+       [{"RowNumber":行号,
+       "act_no":活动编号,
+       "act_name":活动名,
+       "act_Place":活动地址",
+       "date_start":开始日期,
+       "time_start":开始时间,
+       "date_end":结束日期,
+       "time_end":结束时间,
+     "is_act_end":活动是否结束" 0 "尚未举行  "1  "举行中  "2  "活动结束  "-1" 获取状态出错
+　　,
+　　"sign_money":报名费 }]  
+8.6 查询该活动用户是否收藏
+  public   string GetFavorState(string key, string userID,  string act_no)
+　　        参数:
+　　string key, 
+　　string userID,  操作员ID
+　　string act_no  活动编号
+　　返回：
+　　"state":0表示失败，1成功
+　　"message": 失败或成功信息
+　　　 1为已经收藏0为未收藏
+　　返回：
+　　"state":0表示失败，1成功
+　　"message":  
+　　　
+8.7 获取用户活动列表
+　　　string GetUserActList(string key, string userID ,string viewRows, string pageNums)
+　　   参数:
+　　string key, 
+　　string userID,  操作员ID
+　　　　string viewRows,    每页显示条数
+　　　　string pageNums     第n页
+　　[{"SignUpID": 活动注册id,
+　　"act_no":活动编号,
+　　"CheckCount":核销数,
+　　"RestCount":剩余核销数
+　　"Flg":报名状态  活动正常："y"活动正常 "3"活动已经缴费
+　　"act_name":活动名,
+　　"act_Place":地址
+　　"date_start":开始日期,
+　　"time_start":开始时间,
+　　"date_end":结束日期,
+　　"time_end":结束时间,
+　　"SignUpNum":"报名人数
+　　"CoverMap": 封面图片地址
+　　"money_time"：剩余有效时间（分钟）
+　　"is_act_end":活动是否结束" 0 "尚未举行  "1  "举行中  "2  "活动结束  "-1" 获取状态出错
+　　"VerificationCode": 验证码
+     "act_img2" 活动方型图
+　　"sign_money"：报名费
+　　" flow_no "：报名流水号
+　　"Is_CancelOrBack":是否完全取消  0 正常  1  完全取消  2  完全退款
+   "CancelSignUpNum"取消报名人数
+　　"CheckCount"   核销人数
+　　"refund_num" 取消报名人数
+　　]}
+8.8 获取子类列表
+　　       string TypeInfoOfSonGet(string key, string userID, string TypeCode  );
+     参数:
+"key",
+"userID", 用户号
+"TypeCode" 当前类，顶级类获取传空字符串“”
+  
+     返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+　　[{"id":类型id,
+　　"Code":类型编码,
+　　"name":活动类型名称",
+　　"parent_id":"父类型id,
+　　"parent_id_path":父id路径,
+　　"level":等级,
+　　"is_show":是否展示,"
+　　sort_order":顺序,
+　　"Brief":备注},
+9 活动缴费
+9.1 获取活动支付相关信息
+        string GetActivityPayInfoByCode(string key ,string userID  ,string QRCode)
+参数:
+"key",
+"userID", 用户号
+"QRCode" 二维码值
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+　　[{"SignUpID":"1",
+　　"act_no":活动编号, 
+　　"cashforchange" 兑换现金,
+　　"accforchange"兑换积分
+　　"act_name":活动名,
+　　"date_start":开始日期,
+　　"time_start":开始时间,
+　　"date_end":结束日期
+　　"time_end":结束时间,
+　　"SignUpNum":报名数,
+　　"acc_percent ": 可使用积分比例,
+　　"acc_num": 可使用固定积分,
+　　"money_time": 剩余缴费时间,
+　　"is_use_acc":"是否使用积分 1为使用 0为不使用
+　　"moneyPeracc":每个积分值多少钱
+　　"act_Place":活动地址,
+　　"CanUseAcc":可交最大积分}]}</
+　　　
+　　　
+　　　
+　　　
+9.2 实现活动报名缴费功能
+public string SignUpPay(string key, string userID, string VerificationCode, string card_id, string card_id_passWord,string UseAcc,   string pay_amount, string sale_amount, string sign_money, string SignUpNum,  string accPay_card_id, string accPay_card_passWord, string pay_way, string is_use_acc)
+               
+参数:
+"key",
+"userID", 用户号
+ "VerificationCode",二维码
+"card_id", 会员卡号
+"card_id_passWord",会员卡密码
+"UseAcc",使用积分
+"pay_amount",实付金额
+"sale_amount",销售金额
+"sign_money",报名单价
+"SignUpNum",报名人数 
+"accPay_card_id"积分支付卡号
+"accPay_card_passWord"积分支付密码
+ "pay_way",支付方式  vip支付： VIP  微信支付：  WXZ
+ "is_use_acc" 是否使用积分  不使用 ：0  使用 1
+
+返回：
+state:0 失败，1 微信支付  2会员卡支付成功。
+message: 失败时返回失败消息 
+　　　 
+　　　"flow_no": 订单流水号 
+9.3 微信端缴费订单提交
+public string WXPayCompleteAction(string key, string userID, string flow_no, string WX_flow_no, string third_no ,string pay_amount)
+     参数:
+       "flow_no",订单流水号
+         "WX_flow_no",微信订单流水号
+       " third_no ",微信第三方订单号
+       "pay_amount",微信支付金额
+     返回：
+     state:0 失败，1 成功。
+　　　　message: 失败时返回失败消息
+9.4 退出缴费
+　　　　string QuitSignPay(string key, string userID, string flow_no);
+     参数:
+       "flow_no",订单流水号
+     返回：
+     state:0 失败，1 成功。
+　　　　message: 失败时返回失败消息
+       
+　　　　
+9.5 根据流水号获取订单信息
+　　　　     string GetOrderInfoByFlowNo(string key, string userID, string flow_no)
+     参数:
+       "flow_no",订单流水号
+     返回：
+     state: 0 失败 1 成功
+　　　　message: 失败时返回失败消息
+　　　　[{"act_name":活动地址,
+　　　　"SignUpNum":报名人数,
+　　　　"card_id":"缴费会员卡号",
+       "status":"缴费状态 “0”未缴费"1"已经缴费”2 ”退款
+       "flow_time":"创建时间",
+       "UseAcc":使用积分数量
+       ,"SignUpID":报名id,
+       "pay_amount":实际付费,
+       "sale_amount":销售金额,
+       "flow_no":订单流水号,
+       "sign_money":报名单价,
+       "WX_ID":微信号,
+       "accPay_card_id":积分支付卡号,
+       "pay_way":支付方式,
+       "is_use_acc":是否使用积分
+       }]}
+        
+9.6 活动退费是否审核操作
+　　　　string Is_refund_ReleaseOperate(string key, string action, string value);
+参数:
+"key",
+"userID", 用户号
+"action ", 动作 update 修改 get获取
+     返回：
+     state:0 失败，1 成功。
+　　　　message: 失败时返回失败消息  成功是返回具体审核值
+9.7 取消报名
+          public string CancelSign(string key, string userID, string cancelNum, string verificationCode1, string memo)
+参数:
+"key",
+"userID", 用户号
+"cancelNum", 取消人数
+"verificationCode1" 二维码
+"memo"备注
+     返回：
+     state:0 失败，1 成功。
+　　　　message: 失败时返回失败消息  成功是返回具体审核值
+9.8 获取报名退款活动信息
+string GetRefundList(string key, string userID, string beginTime, string endTime, string Applicant, string status, string viewRows, string pageNums);
+参数:
+"key",
+"userID", 用户号
+" beginTime ", 开始时间
+" endTime " 结束时间
+" Applicant" 退款人
+" status " 退款状态  退款申请中 2  退款成功3
+" viewRows " 行数
+" pageNums " 页数
+
+"memo"备注
+     返回：
+     state:0 失败，1 成功。
+　　　　message: 失败时返回失败消息  成功是返回具体审核值
+tab1:?成功时才有本信息
+　　　[{"RowNumber":行号,
+　　　"CheckCount":核销数,
+　　　"act_name":"活动名",
+　　　"date_start":开始日期,
+　　　"time_start":"开始时间",
+　　　"date_end":"活动结束日期"
+　　　,"time_end":"活动结束时间",
+　　　"refund_num":"已经退款人数",
+　　　" release_time ":"审核时间",
+　　　" release_memo ":"审核备注",
+　　　" third_no ":"第三方微信订单号",
+　　　"addr":"地址",
+　　　"card_id":"会员卡支付卡号",
+　　　"status":"退款状态 ", 2退款中待审核  3退款成功 
+　　　"flow_time":"流水号生成日期",
+　　　"UseAcc":"退款积分"（负值）,
+　　　"SignUpID":"报名id",
+　　　"pay_amount":"退款金额（负值）",
+　　　"sale_amount":"退款销售金额（负值）",
+　　　"flow_no":"流水号",
+　　　"sign_money":"报名单价",
+　　　"NowRefund_num":"当前退款人数（负值）",
+　　　"SignUpNum":"总报名数",
+　　　"WX_ID":"微信号",
+　　　"accPay_card_id":"积分卡",
+　　　"pay_way":"支付方式",
+　　　"is_use_acc":"是否使用积分",
+　　　"memo":"退款原因"
+　　　"release_person" 审核人
+　　　"open_ID"  操作人
+　　　"CancelSignUpNum":"已取消人数"
+　　　"NickName":微信昵称
+　　　}]}</
+tab2:?成功时才有本信息
+"con":?总条数
+9.9 根据流水号获取退款信息
+   string GetReFundInfoByFlowNo(string key, string userID, string flow_no);
+参数:
+"key",
+"userID", 用户号
+ 
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+　　　[{"RowNumber":行号,
+　　　"CheckCount":核销数,
+　　　"act_name":"活动名",
+　　　"date_start":开始日期,
+　　　"time_start":"开始时间",
+　　　"date_end":"活动结束日期"
+　　　,"time_end":"活动结束时间",
+　　　"refund_num":"已经退款人数",
+　　　"addr":"地址",
+　　　"card_id":"会员卡支付卡号",
+　　　"status":"退款状态 ", 2退款中待审核  3退款成功 
+　　　"flow_time":"流水号生成日期",
+　　　"UseAcc":"退款积分"（负值）,
+　　　"SignUpID":"报名id",
+　　　"pay_amount":"退款金额（负值）",
+　　　"sale_amount":"退款销售金额（负值）",
+　　　"flow_no":"流水号",
+　　　"sign_money":"报名单价",
+　　　"NowRefund_num":"当前退款人数（负值）",
+　　　"SignUpNum":"总报名数",
+　　　"WX_ID":"微信号",
+　　　"accPay_card_id":"积分卡",
+　　　"pay_way":"支付方式",
+　　　"is_use_acc":"是否使用积分",
+　　　"memo":"退款原因"
+　　　" CancelSignUpNum":"已取消人数"
+　　　"NickName":微信昵称
+　　　}]}
+　　　
+　　　
+9.10 审核活动退款
+string ReFundRelease(string key, string userID, string flow_no, string releaseMemo, string isRealease, string third_no, string WX_flow_no)
+        参数:
+         "key",
+         "userID", 用户号
+         " flow_no "，流水号
+         " releaseMemo " 审核原因
+         " isRealease " 是否审核
+           " third_no " 第三方微信号
+         " WX_flow_no "微信流水号
+   返回：
+state:0 失败，1 成功。
+         message: 失败时返回失败消息
+         
+         
+9.11 日志信息获取
+string GetJournalInfo(string key, string userID, string oper_type, string min_oper_time, string max_oper_time, string pay_way, string stutas, string forOrback, string NickName, string viewRows, string pageNums);
+参数:
+         "key",
+         "userID", 用户号
+         "?oper_type" , 操作类型 0取消报名 1 退款申请 2退款审核  
+         "min_oper_time",操作开始时间
+         "max_oper_time" , 操作结束时间
+         "pay_way",支付方式 VIP WXZ  ACC
+         "stutas",审核状态  0 没通过， 1通过
+         "forOrback",前台还是后台 0前台 1后台
+         "NickName" 操作人昵称
+   返回：
+state:0 失败，1 成功。
+         message: 失败时返回失败消息
+　　　　tab1:[{"RowNumber":"行号",
+           "id":"编号",
+           "VerificationCode":"验证码",
+           "oper_type":操作类型 0取消报名 1 退款申请 2退款审核  
+           ,"oper_person":"操作人 openid 或者userid",
+           "oper_time":"操作时间"
+           ,"Num":"操作人数",
+           "amount":"操作金额",
+           "pay_way":"操作积分",
+           "stutas":"审核状态 0不通过 1 通过",
+           "forOrback":"前台还是后台", 
+           tab2:[{"con":"总数"}]}
+　　　
+9.12 审核信息获取
+  public string GetRefundRealeseList(string key, string userID, string refund_type, string open_ID, string NickName, string memo, string min_flow_time, string max_flow_time, string release_person, string min_release_time, string max_release_time, string release_memo, string flow_no, string third_no, string act_no, string addr, string status, string viewRows, string pageNums)
+        
+参数:
+"key",
+"userID", 用户号
+"refund_type",  退款类型 0前台  1后台      
+"open_ID",   操作退款人 id     
+"NickName",    昵称    
+"memo",   退款备注     
+"min_flow_time",   查询退款申请发起起始时间     
+"max_flow_time",      查询退款申请发起结束时间  
+"release_person",   查询审核人昵称     
+"min_release_time",    审核起始时间    
+"max_release_time",     审核结束时间   
+"release_memo",       审核备注 
+"flow_no",   流水号     
+"third_no",  第三方流水号      
+"act_no",    活动编号    
+"addr",      地址  
+"status",    审核状态    
+
+ 
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+" [{"RowNumber":"行号",
+"id":"退款表id",
+"refund_type":"退款类型",
+"open_ID":"操作人id ",
+"NickName":"昵称",
+"memo":"退款理由",
+"release_person":"审核人"
+,"release_time":"审核时间",
+"release_memo":"审核备注",
+"flow_no":"流水号",
+"third_no":"",
+"flow_time":"退款申请时间",
+"act_no":"活动编号",
+"addr":"地址",
+"status":"退款状态 "
+"UserName"：审核人名称}],"
+9.13 活动报名统计报表
+   string ActivityAddrInfoSigUpStatis(string key, string userID, string act_no, string act_name, string mindate_start, string maxdate_start, string mindate_end, string maxdate_end, string addr, string minsignTotalCount, string maxsignTotalCount, string viewRows, string pageNums);
+
+参数:
+"key",
+"userID", 用户号
+"act_no",查询活动编号模糊查询
+"act_name",查询活动名称 模糊查询
+"mindate_start",查询最小开始日期
+"maxdate_start",查询最大开始日期
+"mindate_end",查询最小结束日期
+"maxdate_end",查询最大结束日期
+"addr,minsignTotalCount",查询最小已报名额
+"maxsignTotalCount"查询最大已报名额
+ 
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+[{"RowNumber":行号,
+"act_no":活动编号,
+"act_name":活动名,
+"man_max":活动人数上限,
+"date_start":开始日期,
+"time_start":开始时间,
+"date_end":结束日期,
+"time_end":结束时间,
+"act_addr_id":地址id,
+"addr":地址名,
+"signTotalCount":报名数,
+"RestCount":剩余报名数,
+"SingPercent":报名比例}]
+9.14 退款原因表
+string Refund_Reason(string key, string userID, string action,string id,string reason,string isview);
+参数:
+"key",
+"userID", 用户号
+action  动作  get 获取, 
+              get_isview  获取isview==1的
+              add 添加,
+              update 修改
+id      编号, add,get_isview 时无效.  get为空则获取所有
+Reason  内容，添加/修改的内容
+Isview  是否显示
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+     Add,update 成功时为空。
+     Get成功时返回如下
+　　　   {"id"：编号
+　　　   "reason":内容
+　　　   "isview":是否显示}
+
+
+9.1 活动报名统计报表明细
+  string ActivitySigUpStatisDetail(string key, string userID, string addreId, string act_no, string Contacts, string PhoneNo, string Card_ID, string minSignUpTime, string maxSignUpTime, string act_name, string viewRows, string pageNums);
+
+参数:
+"key",
+"userID", 用户号
+ 
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+ [{"SignUpID"：报名号
+ "RowNumber":行号,
+ "Contacts":联系人,
+ "PhoneNo":电话号,
+ "Card_ID":会员号
+ ,"SignUpTime":注册日期
+ ,"act_no":活动编码
+ ,"act_name":活动名} 
+ 
+　　
+1 格式示例
+
+
+1.1.1 三级标题
+   正文内容
+1.1.2 三级标题
+   正文内容
+1.1.3 三级标题
+   正文内容
+   
+   
+   
+               "id": "3",
+               "table_name": "card_paylist",
+               "ch_name": "会员卡消费明细",
+               "day_time": "00:20:00",
+               "sync_sp_minutes": "-1",
+               "one_cnt": "100",
+               "one_sp_second": "1",
+               "mark": "凌晨12点20开始同步,每次同步100条,每次间隔1秒后继续同步,直到同步完成"
+附录：
+参考文献：
+参考手册
+

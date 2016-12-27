@@ -1,0 +1,9 @@
+﻿   string ActInfofkBranchGet(string key ,string userID PARAWithStr)
+参数:
+"key",
+"userID", 用户号
+ DocumentPara
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 
+ DocumentResultPara

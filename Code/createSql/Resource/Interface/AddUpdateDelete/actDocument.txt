@@ -1,0 +1,11 @@
+﻿   string ActInfofkBranchGet(string key ,string userID PARAWithStr,string action);
+参数:
+"key",
+"userID", 用户号
+"action":  操作类型  add 添加 update 修改 del 删除
+"id": 编号， 在add，del 时无效
+DocumentPara
+ 
+返回：
+state:0 失败，1 成功。
+message: 失败时返回失败消息 

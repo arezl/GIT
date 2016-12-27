@@ -1,0 +1,10 @@
+ public string ActInfofkBranchGet( out DataTable dt PARAWithStr)
+        {
+            dt = new DataTable(); 
+            if (act_no == "")
+                return "活动ID不能为空!";
+            string dbcmd = "select t1.*, t2.[StoreName] branch_name ,t2.[address] from [WX_Activity].[dbo].[act_info_branch]  t1  "
+                + "\r\n  left join [WX_SYSMGT].[dbo].[Base_Store] t2 on t1.branch_no = t2.[StoreID]  where t1.act_no = '" + act_no + "'";
+            string ret = sqldb.executeQuery(dbcmd, out dt);
+            return ret;
+        }

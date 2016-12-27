@@ -1,0 +1,55 @@
+﻿ public string ActInfofkBranchGet( out DataSet dt PARAWithStr)
+        {
+             dt = new DataSet();
+			viewRows = viewRows.Trim();
+            pageNums = pageNums.Trim();
+            if (viewRows == "" || viewRows == "0")
+            {
+                return "每页显示参数错误";  //加入状态表
+            }
+            if (pageNums == "" || pageNums == "0")
+            {
+                return "页码有误";  //加入状态表
+            }
+            string sql = @"
+SELECT [id]
+      ,[VerificationCode]
+      ,[oper_type]
+      ,[oper_person]
+      ,[oper_time]
+      ,[Num]
+      ,[amount]
+      ,[pay_way]
+      ,[stutas]
+      ,[forOrback]
+     , B.NickName  
+  FROM [WX_Activity].[dbo].[t_journal]  A, WX_SYSMGT.dbo.WX_AttentionList B 
+  where  A.oper_person=B.OpenID     and   B.NickName  like'%{0}%'    {1}     ";
+           string whereStr = "";
+             sql=string.Format(sql,NickName,whereStr);
+			 //conSql必须在前面
+			 string conSql = DbHelper.GetDataByPageCountInfo(sql);
+			 //
+
+            sql = DbHelper.GetDataByPageSql(sql, "oper_time", viewRows, pageNums);
+            
+			
+           // conSql = string.Format(conSql, whereStr);
+
+            string[] sqls = { sql, conSql };
+            string[] tabs = { "tab1", "tab2" };
+
+
+
+            try
+            {
+                dt = DBUtility.SQLHelper.Query(sqls, tabs);
+            }
+            catch (Exception ee)
+            {
+                dt = new DataSet();
+                return ee.Message;
+            }
+            return "";
+			
+			}

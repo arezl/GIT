@@ -1,0 +1,14 @@
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\bin\Debug\Maticsoft.DBUtility.dll
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\bin\Debug\Maticsoft.DBUtility.pdb
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\bin\Debug\IBatisNet.Common.dll
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\bin\Debug\IBatisNet.DataMapper.dll
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\bin\Debug\MySql.Data.dll
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\bin\Debug\System.Data.SQLite.DLL
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\obj\Debug\Maticsoft.DBUtility.dll
+C:\Program Files (x86)\Maticsoft\Codematic2\Template\CodematicDemoS3p\DBUtility\obj\Debug\Maticsoft.DBUtility.pdb
+G:\工作\tool\createSql\createSql\DBUtility\bin\Debug\Maticsoft.DBUtility.dll
+G:\工作\tool\createSql\createSql\DBUtility\bin\Debug\Maticsoft.DBUtility.pdb
+G:\工作\tool\createSql\createSql\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+G:\工作\tool\createSql\createSql\DBUtility\obj\Debug\Maticsoft.DBUtility.dll
+G:\工作\tool\createSql\createSql\DBUtility\obj\Debug\Maticsoft.DBUtility.pdb

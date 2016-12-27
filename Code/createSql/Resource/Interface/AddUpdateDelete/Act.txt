@@ -1,0 +1,4 @@
+public string ActInfofkBranchGet(string key,string userID PARAWithStr,string action);
+        {
+            return m_act_info_branch.ActInfofkBranchGet(PARA);
+        }

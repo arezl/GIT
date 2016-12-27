@@ -1,0 +1,13 @@
+ public static string ActInfofkBranchGet(PARAWithStr)
+        {
+            act_info_branch act_info_branchs = new act_info_branch();
+            DataTable dt;
+            string ret = act_info_branchs.ActInfofkBranchGet(  out dt PARA);
+            if (ret != "")
+            {
+                return globals.pub.soa_return_json(false, ret);
+            }
+            string jsion = DataSetToJsonAndXml.DataTable2Json(dt);
+            return globals.pub.soa_return_json(true, jsion);
+
+        }

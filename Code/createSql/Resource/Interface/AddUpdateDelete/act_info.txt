@@ -1,0 +1,50 @@
+﻿ 
+
+
+			    public string Add(  PARAWithStr) //act_info_branch
+        {
+            if (act_no == "" || branch_no == "")
+            {
+                return "不能传入空参数!";
+            }
+            //??  门店编号是否存在
+            string dbcmd = string.Format("insert [WX_Activity].[dbo].[act_info_branch] (act_no, branch_no) values('{0}','{1}')", act_no, branch_no);
+            int num = 0;
+            string ret = sqldb.executeUpdate(dbcmd, out num);
+			   if (num!=1)
+            {
+                return " 操作失败";
+            }
+            return ret;
+        }
+
+
+        public string Update( PARAWithStr)
+        {
+            string set = "";
+            if (act_no == "" && branch_no == "")
+            {
+                return "参数不能全空";
+            }
+            if (act_no != "") set += " act_no= '" + act_no + "',";
+            if (branch_no != "") set += "branch_no= '" + branch_no + "',";
+            set = set.Remove(set.Length - 1);
+
+            string dbcmd = "update [WX_Activity].[dbo].[act_info_branch] set " + set + "where id = " + id;
+            int num = 0;
+            string ret = sqldb.executeUpdate(dbcmd, out num);
+			   if (num!=1)
+            {
+                return " 操作失败";
+            }
+            return ret;
+        }
+
+        public string Del(string id)
+        {
+            if (id == "") return "ID不能为空!";
+            string dbcmd = "delete [WX_Activity].[dbo].[act_info_branch]  where id = " + id;
+            int num = 0;
+            string ret = sqldb.executeUpdate(dbcmd, out num);
+            return ret;
+        }

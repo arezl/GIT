@@ -1,0 +1,17 @@
+   public static string ActInfofkBranchGet(PARAWithStr)
+        {
+            act_info_branch act_info_branchs = new act_info_branch();
+            DataSet dt;
+            string ret = act_info_branchs.ActInfofkBranchGet(  out dt PARA);
+            if (ret != "")
+            {
+                return globals.pub.soa_return_json(false, ret);
+            }
+            string jsion = DataSetToJsonAndXml.Dataset2Json(dt);
+      
+            ret = globals.pub.soa_return_json(true, "1");   
+            ret = ret.Remove(ret.Length - 1) + "," + jsion.Remove(0, 1);
+
+            return ret;
+
+        }
