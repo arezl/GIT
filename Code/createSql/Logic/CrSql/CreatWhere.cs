@@ -107,10 +107,15 @@ namespace createSql.Logic.CrSql
         private bool IsNumType(string name)
         {
             bool result = false;
-            if (name.ToLower().IndexOf("int")>-1)
+            foreach (var item in CreSqlModel.AllDataType)
             {
-                result = true; ;
+                if (name.ToLower().IndexOf(item) > -1)
+                {
+                    result = true;
+                    return true;
+                }
             }
+           
             return result;
         }
     }
