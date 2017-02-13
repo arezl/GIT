@@ -28,11 +28,18 @@ SELECT [id]
            string whereStr = "";
              sql=string.Format(sql,NickName,whereStr);
 			 //conSql必须在前面
-			 string conSql = DbHelper.GetDataByPageCountInfo(sql);
-			 //
+			
+            string conSql = DbHelper.GetDataByPageCountInfo2(sql, whereStr);
 
-            sql = DbHelper.GetDataByPageSql(sql, "oper_time", viewRows, pageNums);
-            
+			 sql = DbHelper.GetDataByPageSql2(sql, "act_no asc", whereStr, viewRows, pageNums);
+       //     if (orderby == "")
+       //     {
+       //        sql = DbHelper.GetDataByPageSql2(sql, "act_no asc", whereStr, viewRows, pageNums);
+       //   }
+       //   else
+       //  {
+       //    sql = DbHelper.GetDataByPageSql2(sql, orderby + " " + desc_asc, whereStr, viewRows, pageNums);
+       //    }
 			
            // conSql = string.Format(conSql, whereStr);
 

@@ -101,12 +101,17 @@
     <Compile Include="Logic\CrActCode\CreateCode\PageCreate.cs" />
     <Compile Include="Logic\CrActCode\CreateCode\UserIdCreate.cs" />
     <Compile Include="Logic\CrActCode\OneCreate.cs" />
+    <Compile Include="Logic\CrSql\CreatClass.cs" />
     <Compile Include="Logic\CrSql\CreatWhere.cs" />
     <Compile Include="Logic\CrSql\insertSal.cs" />
     <Compile Include="Logic\CrSql\asqlCrete.cs" />
     <Compile Include="Logic\CrSql\UpdateSql.cs" />
+    <Compile Include="Logic\CrWhere\abstrCodeByTable.cs" />
+    <Compile Include="Logic\CrWhere\ClassCreate.cs" />
+    <Compile Include="Logic\CrWhere\ValueBindCreate.cs" />
     <Compile Include="Model\AllData\Datas.cs" />
     <Compile Include="Model\AllData\DatasDal.cs" />
+    <Compile Include="Model\AllData\Test.cs" />
     <Compile Include="Model\CrSql\CreSqlModel.cs" />
     <Compile Include="Model\CrSql\TableModel.cs" />
     <Compile Include="Model\CrSql\WordModel.cs" />
@@ -114,12 +119,14 @@
     <Compile Include="Model\PublicInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tool\DataTableTool.cs" />
     <Compile Include="Tool\PropertyTool\DynamicMethodMemberAccessor.cs" />
     <Compile Include="Tool\PropertyTool\IMemberAccessor.cs" />
     <Compile Include="Tool\Serializer\Book.cs" />
     <Compile Include="Tool\Serializer\SerializerBinaryControl.cs" />
     <Compile Include="Tool\Serializer\SerializerJasonControl.cs" />
     <Compile Include="Tool\Serializer\SerializerXmlControl.cs" />
+    <Compile Include="Tool\WebScrapter.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

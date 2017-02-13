@@ -75,6 +75,9 @@
             this.richtxtAct = new System.Windows.Forms.RichTextBox();
             this.richtxtDocument = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.richTextBind = new System.Windows.Forms.RichTextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.richTextClass = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.richTextBoxKey = new System.Windows.Forms.RichTextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -86,13 +89,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.richTextWhere = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.buttonBroser = new System.Windows.Forms.Button();
             this.richTextBoxWord = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnLoadDoc = new System.Windows.Forms.Button();
             this.richTextDoc = new System.Windows.Forms.RichTextBox();
             this.btnLoadDocumentDoc = new System.Windows.Forms.Button();
-            this.richTextClass = new System.Windows.Forms.RichTextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -126,6 +129,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -531,6 +537,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Silver;
+            this.tabPage3.Controls.Add(this.richTextBind);
             this.tabPage3.Controls.Add(this.label19);
             this.tabPage3.Controls.Add(this.richTextClass);
             this.tabPage3.Controls.Add(this.label17);
@@ -549,6 +556,31 @@
             this.tabPage3.Size = new System.Drawing.Size(675, 424);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "whereCreate";
+            // 
+            // richTextBind
+            // 
+            this.richTextBind.Location = new System.Drawing.Point(312, 288);
+            this.richTextBind.Name = "richTextBind";
+            this.richTextBind.Size = new System.Drawing.Size(251, 133);
+            this.richTextBind.TabIndex = 34;
+            this.richTextBind.Text = "";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(28, 245);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 12);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "class";
+            // 
+            // richTextClass
+            // 
+            this.richTextClass.Location = new System.Drawing.Point(28, 273);
+            this.richTextClass.Name = "richTextClass";
+            this.richTextClass.Size = new System.Drawing.Size(251, 133);
+            this.richTextClass.TabIndex = 32;
+            this.richTextClass.Text = "";
             // 
             // label17
             // 
@@ -639,6 +671,8 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.Silver;
+            this.tabPage4.Controls.Add(this.webBrowser1);
+            this.tabPage4.Controls.Add(this.buttonBroser);
             this.tabPage4.Controls.Add(this.richTextBoxWord);
             this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.btnLoadDoc);
@@ -650,6 +684,27 @@
             this.tabPage4.Size = new System.Drawing.Size(675, 424);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "tabPage4";
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(39, 205);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(592, 184);
+            this.webBrowser1.TabIndex = 33;
+            // 
+            // buttonBroser
+            // 
+            this.buttonBroser.Location = new System.Drawing.Point(495, 395);
+            this.buttonBroser.Name = "buttonBroser";
+            this.buttonBroser.Size = new System.Drawing.Size(97, 23);
+            this.buttonBroser.TabIndex = 32;
+            this.buttonBroser.Text = "buttonBroser";
+            this.buttonBroser.UseVisualStyleBackColor = true;
+            this.buttonBroser.Click += new System.EventHandler(this.buttonBroser_Click);
             // 
             // richTextBoxWord
             // 
@@ -695,23 +750,6 @@
             this.btnLoadDocumentDoc.Text = "加载word";
             this.btnLoadDocumentDoc.UseVisualStyleBackColor = true;
             this.btnLoadDocumentDoc.Click += new System.EventHandler(this.btnLoadDocumentDoc_Click);
-            // 
-            // richTextClass
-            // 
-            this.richTextClass.Location = new System.Drawing.Point(28, 315);
-            this.richTextClass.Name = "richTextClass";
-            this.richTextClass.Size = new System.Drawing.Size(251, 91);
-            this.richTextClass.TabIndex = 32;
-            this.richTextClass.Text = "";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(28, 289);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(35, 12);
-            this.label19.TabIndex = 33;
-            this.label19.Text = "class";
             // 
             // Form1
             // 
@@ -808,6 +846,9 @@
         private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.RichTextBox richTextClass;
+        private System.Windows.Forms.RichTextBox richTextBind;
+        private System.Windows.Forms.Button buttonBroser;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 

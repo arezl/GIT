@@ -1,4 +1,5 @@
-﻿using createSql.Model;
+﻿using createSql.Logic.CrWhere;
+using createSql.Model;
 using createSql.Model.CrSql;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace createSql.Logic.CrSql
 {
     class CreatWhere
     {
-        internal string CreateSql(DataTable dt,out string paraStr,out string PureStr)
+        internal string CreateSql(DataTable dt,out string paraStr,out string PureStr )
         {
             string modelStr = "";
             PureStr = "";
@@ -36,7 +37,8 @@ namespace createSql.Logic.CrSql
             Roundcode += "   whereStr += \" and SignUpTime <= '\" + max_SignUpTime + \"'\";\n";
             Roundcode += "    }  \n ";
             String wherStr = "";
-          
+         
+            
             List<WordModel> listModel = new List<WordModel>();
 
 
@@ -85,6 +87,7 @@ namespace createSql.Logic.CrSql
                 }
                 if (col.DataType.Name.ToLower().IndexOf("string") > -1)
                 {
+
                     wherStr += ReplaceToAimWord(Likecode, Name)  ;
                     paraStr += "," + Name;
                 }
@@ -109,7 +112,7 @@ namespace createSql.Logic.CrSql
             bool result = false;
             foreach (var item in CreSqlModel.AllDataType)
             {
-                if (name.ToLower().IndexOf(item) > -1)
+                if (name.IndexOf(item) > -1)
                 {
                     result = true;
                     return true;

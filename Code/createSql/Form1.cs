@@ -18,6 +18,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Maticsoft.Common;
 using createSql.DAL;
+using createSql.Logic.CrWhere;
+using createSql.Model.AllData;
+using createSql.Tool;
 
 namespace createSql
 {
@@ -332,9 +335,19 @@ namespace createSql
                 int colIndex = 0;
                 string ParaStr  ;
                 string PureStr;
-           richTextWhere.Text=     CreateWhere.CreateSql(dt,out  ParaStr,out PureStr);
+                AbstrCodeByTable createClass = new ClassCreate();
+                richTextWhere.Text=     CreateWhere.CreateSql(dt,out  ParaStr,out PureStr );
+                CreatClass crt = new CreatClass();
+                List<WordModel> allMode = PublicInfo.AllColumnModes;
+                crt.CreateClass(createClass, allMode);
+                Model.AllData.Test test = new Model.AllData.Test();
+                BindData(dt, test);
+                richTextClass.Text = createClass.resultStr;
                 richTextPara.Text = ParaStr;
                 richTextPureStr.Text = PureStr;
+                ValueBindCreate BindVal = new ValueBindCreate();
+                crt.CreateClass(BindVal, allMode);
+                richTextBind.Text = BindVal.resultStr;
                 //foreach (DataColumn col in dt.Columns)
                 //{
                 //    colIndex++;
@@ -362,6 +375,11 @@ namespace createSql
                 //    }
                 //}
             }
+        }
+
+        private void BindData(DataTable dt, Test test)
+        {
+          //  throw new NotImplementedException();
         }
 
         private void btnLoadDocumentDoc_Click(object sender, EventArgs e)
@@ -494,7 +512,13 @@ namespace createSql
                 }
                
             }
-          
+
+        }
+
+        private void buttonBroser_Click(object sender, EventArgs e)
+        {
+            WebScrapter scper = new WebScrapter(webBrowser1);
+            scper.Scrapt("http://weibo.com/");
         }
     }
     [Serializable]
