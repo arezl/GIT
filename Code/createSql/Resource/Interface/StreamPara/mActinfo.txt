@@ -1,0 +1,28 @@
+ 
+
+
+
+		 public ActAddrResult ActInfofkBranchGet(Stream stream)
+        {
+            //actname,id
+
+            StreamReader sr = new StreamReader(stream);
+            string content = sr.ReadToEnd();
+            sr.Dispose();
+            ParameterCollection paras = new ParameterCollection(content,1);
+            ActAddrResult result = new ActAddrResult();
+            if (StramParaContainJuge)
+            {
+               StramPara
+                result = new ActAddrBLL().GetActAddrList();
+
+            }
+            else
+            {
+                result.status = (int)ResultEnum.MissParameters;
+                result.resultdes = EnumHelper.GetEnumDescription((ResultEnum)result.status);
+
+            }
+              return result;
+        }
+
