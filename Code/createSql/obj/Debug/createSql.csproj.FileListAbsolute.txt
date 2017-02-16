@@ -83,3 +83,8 @@ G:\工作\tool\GIT\Code\createSql\obj\Debug\createSql.Form1.resources
 G:\工作\tool\GIT\Code\createSql\obj\Debug\createSql.Properties.Resources.resources
 G:\工作\tool\GIT\Code\createSql\obj\Debug\createSql.csproj.GenerateResource.Cache
 G:\工作\tool\GIT\Code\createSql\bin\Debug\createSql.pdb
+G:\工作\tool\GIT\Code\createSql\bin\Debug\Resource\Interface\StreamPara\Act.txt
+G:\工作\tool\GIT\Code\createSql\bin\Debug\Resource\Interface\StreamPara\actDocument.txt
+G:\工作\tool\GIT\Code\createSql\bin\Debug\Resource\Interface\StreamPara\act_info.txt
+G:\工作\tool\GIT\Code\createSql\bin\Debug\Resource\Interface\StreamPara\IAct.txt
+G:\工作\tool\GIT\Code\createSql\bin\Debug\Resource\Interface\StreamPara\mActinfo.txt

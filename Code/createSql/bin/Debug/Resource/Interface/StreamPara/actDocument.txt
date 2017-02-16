@@ -1,0 +1,17 @@
+﻿   string ActInfofkBranchGet(string key ,string userID PARAWithStr)
+参数:
+"key",
+"userID", 用户号
+DocumentPara
+"viewRows": 每页内容
+"pageNums": 第n页
+
+
+ 
+返回：
+state:0 失败，1 成功。
+tab1: 成功时才有本信息
+ DocumentResultPara
+tab2: 成功时才有本信息
+"con": 总条数
+

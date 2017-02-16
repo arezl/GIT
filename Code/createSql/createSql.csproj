@@ -237,6 +237,21 @@
     <Content Include="Resource\Interface\Normal\mActinfo.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resource\Interface\StreamPara\Act.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Interface\StreamPara\actDocument.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Interface\StreamPara\act_info.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Interface\StreamPara\IAct.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resource\Interface\StreamPara\mActinfo.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resource\活动信息接口文档.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

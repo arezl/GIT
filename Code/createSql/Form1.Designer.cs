@@ -75,6 +75,8 @@
             this.richtxtAct = new System.Windows.Forms.RichTextBox();
             this.richtxtDocument = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.richTextClass = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.richTextBoxKey = new System.Windows.Forms.RichTextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -91,8 +93,6 @@
             this.btnLoadDoc = new System.Windows.Forms.Button();
             this.richTextDoc = new System.Windows.Forms.RichTextBox();
             this.btnLoadDocumentDoc = new System.Windows.Forms.Button();
-            this.richTextClass = new System.Windows.Forms.RichTextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -343,7 +343,8 @@
             this.comboBox1.Items.AddRange(new object[] {
             "AddUpdateDelete",
             "Page",
-            "Normal"});
+            "Normal",
+            "StreamPara"});
             this.comboBox1.Location = new System.Drawing.Point(375, 11);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
@@ -550,6 +551,23 @@
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "whereCreate";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(28, 289);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 12);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "class";
+            // 
+            // richTextClass
+            // 
+            this.richTextClass.Location = new System.Drawing.Point(28, 315);
+            this.richTextClass.Name = "richTextClass";
+            this.richTextClass.Size = new System.Drawing.Size(251, 91);
+            this.richTextClass.TabIndex = 32;
+            this.richTextClass.Text = "";
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -695,23 +713,6 @@
             this.btnLoadDocumentDoc.Text = "加载word";
             this.btnLoadDocumentDoc.UseVisualStyleBackColor = true;
             this.btnLoadDocumentDoc.Click += new System.EventHandler(this.btnLoadDocumentDoc_Click);
-            // 
-            // richTextClass
-            // 
-            this.richTextClass.Location = new System.Drawing.Point(28, 315);
-            this.richTextClass.Name = "richTextClass";
-            this.richTextClass.Size = new System.Drawing.Size(251, 91);
-            this.richTextClass.TabIndex = 32;
-            this.richTextClass.Text = "";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(28, 289);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(35, 12);
-            this.label19.TabIndex = 33;
-            this.label19.Text = "class";
             // 
             // Form1
             // 
