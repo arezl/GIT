@@ -1,17 +1,28 @@
-   public static string ActInfofkBranchGet(PARAWithStr)
+ 
+
+
+
+		 public ActAddrResult ActInfofkBranchGet(Stream stream)
         {
-            act_info_branch act_info_branchs = new act_info_branch();
-            DataSet dt;
-            string ret = act_info_branchs.ActInfofkBranchGet(  out dt PARA);
-            if (ret != "")
+            //actname,id
+
+            StreamReader sr = new StreamReader(stream);
+            string content = sr.ReadToEnd();
+            sr.Dispose();
+            ParameterCollection paras = new ParameterCollection(content,1);
+            ActAddrResult result = new ActAddrResult();
+            if (StramParaContainJuge)
             {
-                return globals.pub.soa_return_json(false, ret);
+               StramPara
+                result = new ActAddrBLL().GetActAddrList();
+
             }
-            string jsion = DataSetToJsonAndXml.Dataset2Json(dt);
-      
-            ret = globals.pub.soa_return_json(true, "1");   
-            ret = ret.Remove(ret.Length - 1) + "," + jsion.Remove(0, 1);
+            else
+            {
+                result.status = (int)ResultEnum.MissParameters;
+                result.resultdes = EnumHelper.GetEnumDescription((ResultEnum)result.status);
 
-            return ret;
-
+            }
+              return result;
         }
+

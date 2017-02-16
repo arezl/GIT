@@ -100,6 +100,7 @@
     <Compile Include="Logic\CrActCode\CreateCode\MainCreate.cs" />
     <Compile Include="Logic\CrActCode\CreateCode\PageCreate.cs" />
     <Compile Include="Logic\CrActCode\CreateCode\UserIdCreate.cs" />
+    <Compile Include="Logic\CrActCode\FunctionTag\IFunctionTag.cs" />
     <Compile Include="Logic\CrActCode\OneCreate.cs" />
     <Compile Include="Logic\CrSql\CreatWhere.cs" />
     <Compile Include="Logic\CrSql\insertSal.cs" />
@@ -205,6 +206,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="document.txt" />
     <Content Include="Resource\Interface\AddUpdateDelete\Act.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

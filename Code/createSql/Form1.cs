@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Maticsoft.Common;
 using createSql.DAL;
+using createSql.Logic.CrActCode.FunctionTag;
 
 namespace createSql
 {
@@ -285,6 +286,9 @@ namespace createSql
             create.ParaOrig = paraStr;
             create.ClassName = txtClassName.Text;
             create.ResultPara = richTextPureStr.Text;
+            create.FunctionTagDic.Add("StramPara", new StramParaGet());
+            create.FunctionTagDic.Add("StramParaContainJuge", new StramParaContainJugeGet());
+            
             string Path = comboBox1.Text;
             create.LoadModulInfo(Path);
             create.AllPrePare();

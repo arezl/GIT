@@ -1,6 +1,7 @@
 ﻿using createSql.DAL;
 using createSql.Logic.CrActCode;
 using createSql.Logic.CrActCode.CreateCode;
+using createSql.Logic.CrActCode.FunctionTag;
 using createSql.Model;
 using System;
 using System.Collections.Generic;
@@ -44,12 +45,21 @@ namespace createSql.Logic.CrActCode
         string ParaWithStr = "";
         private string _Para = "";
         private string _ParaOrig = "";
+        public List<string> ParasList =new  List<string>();
      
 
         public string ParaOrig
         {
             get { return _ParaOrig; }
-            set {  _ParaOrig=value;
+            set {
+                ParasList.Clear();
+                foreach (string item in value.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    string itemS = item.Trim();
+                    ParasList.Add(itemS);
+                }
+
+                    _ParaOrig =value;
                 Para = value;
             }
         }
@@ -67,6 +77,7 @@ namespace createSql.Logic.CrActCode
         }
 
         public string ResultPara { get; internal set; }
+        public Dictionary<string, IFunctionTag> FunctionTagDic = new Dictionary<string, IFunctionTag>();
         public string ClassName { get; internal set; }
 
         internal string GetDocument()

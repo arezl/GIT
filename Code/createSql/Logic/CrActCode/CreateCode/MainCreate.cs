@@ -23,6 +23,12 @@ namespace createSql.Logic.CrActCode.CreateCode
          //   createActCode.Para = createActCode.ParaOrig;
             string DealStr= createActCode.ParaOrig;
             string documentstr = "";
+            foreach (string tagKey in createActCode.FunctionTagDic.Keys)
+            {
+                OringStr = Regex.Replace(OringStr, @"\b" + tagKey + @"\b", createActCode.FunctionTagDic[tagKey].ParaStrDeal(createActCode));
+          
+            }  
+
             foreach (string item in DealStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
           string   itemS = item.Trim();
