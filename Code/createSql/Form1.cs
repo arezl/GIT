@@ -76,7 +76,7 @@ namespace createSql
 
             List<string> oriSqls = richTxtOrigData.Text.Split('\n').ToList();
 
-            DbHelperSQL.connectionString = DbHelperSQL.connectionString.Replace("WX_Activity", "test");
+          //  DbHelperSQL.connectionString = DbHelperSQL.connectionString.Replace("WX_Activity", "test");
 
         }
 

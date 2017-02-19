@@ -521,7 +521,7 @@ namespace Maticsoft.DBUtility
         }
         public static DataSet QuerySchema(string SQLString)
         {
-       string     connectionString = "user id=zyhui;password=zhangYY66;Server=139.196.217.165;Database=WX_SYSMGT;Connect Timeout=30";
+     //  string     connectionString = "user id=yjy;password= yjyYY1234;Server=222.214.218.80  ;Database=WX_SYSMGT;Connect Timeout=30";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 DataSet ds = new DataSet();
@@ -817,7 +817,8 @@ namespace Maticsoft.DBUtility
                     }
                     catch (System.Data.SqlClient.SqlException e)
                     {
-                        throw e;
+                        return null;
+                        //throw e;
                     }
                 }
             }

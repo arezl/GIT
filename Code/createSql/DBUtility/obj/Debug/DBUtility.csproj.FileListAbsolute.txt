@@ -12,3 +12,8 @@ G:\工作\tool\createSql\createSql\DBUtility\bin\Debug\Maticsoft.DBUtility.pdb
 G:\工作\tool\createSql\createSql\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
 G:\工作\tool\createSql\createSql\DBUtility\obj\Debug\Maticsoft.DBUtility.dll
 G:\工作\tool\createSql\createSql\DBUtility\obj\Debug\Maticsoft.DBUtility.pdb
+G:\工作\tool\GIT\Code\createSql\DBUtility\bin\Debug\Maticsoft.DBUtility.dll
+G:\工作\tool\GIT\Code\createSql\DBUtility\bin\Debug\Maticsoft.DBUtility.pdb
+G:\工作\tool\GIT\Code\createSql\DBUtility\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+G:\工作\tool\GIT\Code\createSql\DBUtility\obj\Debug\Maticsoft.DBUtility.dll
+G:\工作\tool\GIT\Code\createSql\DBUtility\obj\Debug\Maticsoft.DBUtility.pdb
