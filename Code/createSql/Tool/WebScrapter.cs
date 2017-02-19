@@ -16,6 +16,9 @@ namespace createSql.Tool
 
         internal void Scrapt(string url)
         {
+
+
+
             Uri ur = new Uri(url);
             broser.Navigate(ur);
             //throw new NotImplementedException();
