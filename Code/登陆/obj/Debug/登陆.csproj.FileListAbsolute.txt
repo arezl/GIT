@@ -1,0 +1,11 @@
+C:\迅雷下载\登陆\登陆\bin\Debug\登陆.exe.config
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.exe
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.pdb
+C:\迅雷下载\登陆\登陆\bin\Debug\登陆.exe
+C:\迅雷下载\登陆\登陆\bin\Debug\登陆.pdb
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.csprojResolveAssemblyReference.cache
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.Form1.resources
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.Frm_user.resources
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.MDIParent1.resources
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.Properties.Resources.resources
+C:\迅雷下载\登陆\登陆\obj\Debug\登陆.csproj.GenerateResource.Cache

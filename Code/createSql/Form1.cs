@@ -89,6 +89,17 @@ namespace createSql
             //string act_detial, string act_more_img, string act_more_link, string act_tel, string act_addrs, string is_send_wx, string is_send_msg, string write_man, string write_time, string is_release)";
             clearData = clearData.Replace("string ", "");
             List<string> oriSqls = richTxtOrigData.Text.Split('\n').ToList();
+            string reslutS = "";
+            foreach (string item in oriSqls)
+            {
+                if (item.IndexOf("INSERT")>-1)
+                {
+                    reslutS += item+"\n";
+                }
+            }
+
+
+
             //  List<string> oriSqls = File.ReadLines("datas.txt").ToList();
             string aimSql = "\"insert into act_info(";
             //     oriSqls[2] = oriSqls[2].Replace(")", "");
@@ -499,6 +510,46 @@ namespace createSql
                
             }
           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string SqlStr = @"  BEGIN TRY 
+Begin  Tran
+{0}
+--ROLLBACK TRAN
+
+ COMMIT TRAN
+ END TRY     
+  BEGIN CATCH    RAISERROR ('操作失败', 16, 1) --ROLLBACK TRAN
+    END CATCH
+
+";
+
+         string   testSql= @"INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('2'           ,'2'            ,'3')
+";
+            testSql += @"
+INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('3'           ,'2'            ,'3')
+go";
+            testSql += @"
+INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('4'           ,'2'            ,'3')
+go"
+;
+            testSql += @"
+INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('5'           ,'2'            ,'3')
+go";
+            testSql += @"
+INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('6'           ,'2'            ,'c')
+go";
+            testSql += @"
+INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('7'           ,'2'            ,'3')
+go";
+            testSql += @"
+INSERT INTO [Test].[dbo].[abc]           ([TestA]           ,[TestBB]           ,[ccc])     VALUES           ('8'           ,'2'            ,'3')
+ 
+";
+            SqlStr = string.Format(SqlStr, testSql);
+            DbHelperSQL.ExecuteSql(testSql);
         }
     }
     [Serializable]

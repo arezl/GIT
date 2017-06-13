@@ -11,8 +11,8 @@ namespace createSql.Model.CrSql
         static public List<string> AllDataType = new List<string>();
         static   CreSqlModel() {
 
-            AllDataType.Add("Int");
-            AllDataType.Add("Decimal");
+            AllDataType.Add("int");
+            AllDataType.Add("decimal");
             }
 
     }

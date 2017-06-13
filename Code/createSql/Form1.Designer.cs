@@ -93,6 +93,7 @@
             this.btnLoadDoc = new System.Windows.Forms.Button();
             this.richTextDoc = new System.Windows.Forms.RichTextBox();
             this.btnLoadDocumentDoc = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -532,6 +533,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Silver;
+            this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.label19);
             this.tabPage3.Controls.Add(this.richTextClass);
             this.tabPage3.Controls.Add(this.label17);
@@ -714,6 +716,16 @@
             this.btnLoadDocumentDoc.UseVisualStyleBackColor = true;
             this.btnLoadDocumentDoc.Click += new System.EventHandler(this.btnLoadDocumentDoc_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(537, 107);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "test";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -809,6 +821,7 @@
         private System.Windows.Forms.TextBox txtClassName;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.RichTextBox richTextClass;
+        private System.Windows.Forms.Button button3;
     }
 }
 
